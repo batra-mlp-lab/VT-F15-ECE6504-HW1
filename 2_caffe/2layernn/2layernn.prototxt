@@ -1,0 +1,63 @@
+Name: "2layernn"
+# the data layer is the same as before. So it is already written for you! 
+layer {
+  name: "data"
+  type: "HDF5Data"
+  top: "images"
+  top: "labels"
+  include {
+    phase: TRAIN
+  }
+  hdf5_data_param {
+    source: "../hdf5-data/train.txt"
+    batch_size: 128
+  }
+}
+layer {
+  name: "data"
+  type: "HDF5Data"
+  top: "images"
+  top: "labels"
+  include {
+    phase: TEST
+  }
+  hdf5_data_param {
+    source: "../hdf5-data/test.txt"
+    batch_size: 128
+  }
+}
+
+# write first fully connected layer
+
+# Inner-product layer 1 goes here
+# activation layer goes here 
+
+# write second fully connected layer
+
+# Inner-product layer 2 goes here
+
+# loss and accuracy layers are similar to the regression. Hence, we have provided them for you! 
+# Please do minor changes depending on your naming convention! 
+
+# loss layer 
+
+layer {
+  name: "loss"
+  type: "SoftmaxWithLoss"
+  bottom: "fc2" 
+  bottom: "labels"
+  top: "loss"
+}
+
+# accuracy layer for testing phase
+
+layer {
+  name: "accuracy"
+  type: "Accuracy"
+  bottom: "fc2"
+  bottom: "labels"
+  top: "accuracy"
+  include {
+    phase: TEST
+  }
+}

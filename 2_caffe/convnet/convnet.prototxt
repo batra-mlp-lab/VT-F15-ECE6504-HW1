@@ -1,0 +1,58 @@
+name: "convnet"
+
+# the data layer is still the same! 
+
+layer {
+  name: "data"
+  type: "HDF5Data"
+  top: "images"
+  top: "labels"
+  include {
+    phase: TRAIN
+  }
+  hdf5_data_param {
+    source: "../hdf5-data/train.txt"
+    batch_size: 128
+  }
+}
+layer {
+  name: "data"
+  type: "HDF5Data"
+  top: "images"
+  top: "labels"
+  include {
+    phase: TEST
+  }
+  hdf5_data_param {
+    source: "../hdf5-data/test.txt"
+    batch_size: 128
+  }
+}
+
+# write convolutional layer here
+
+# write activation layer here
+
+# write pooling layer here
+
+# write a fully connected layer here
+
+# the loss and accuracy layers are similar. You may need to make some changes depending on how you name! 
+
+layer {
+  name: "loss"
+  type: "SoftmaxWithLoss"
+  bottom: "fc1"
+  bottom: "labels"
+  top: "loss"
+}
+layer {
+  name: "accuracy"
+  type: "Accuracy"
+  bottom: "fc1"
+  bottom: "labels"
+  top: "accuracy"
+  include {
+    phase: TEST
+  }
+}

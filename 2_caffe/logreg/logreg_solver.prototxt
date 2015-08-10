@@ -1,0 +1,14 @@
+net: "logreg_train_val.prototxt"
+test_iter: 10
+test_interval: 1000
+base_lr: 0.000001
+lr_policy: "step"
+gamma: 0.0
+stepsize: 5000
+display: 1000
+max_iter: 10000
+momentum: 0.9
+weight_decay: 0.0005
+snapshot: 5000
+snapshot_prefix: "logreg-snapshot/"
+solver_mode: CPU

@@ -1,0 +1,1 @@
+/path/to/hw1/2_caffe/hdf5-data/train.h5

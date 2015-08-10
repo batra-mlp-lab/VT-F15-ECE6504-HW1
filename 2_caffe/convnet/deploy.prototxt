@@ -1,0 +1,15 @@
+name: "convnet"
+input: "data"
+input_dim: 1
+input_dim: 3
+input_dim: 32
+input_dim: 32
+
+# paste the layers you wrote in convnet.prototxt here and make appropriate changes in the softmax layer below
+
+layer {
+  name: "prob"
+  type: "Softmax"
+  bottom: "fc1"
+  top: "prob"
+}
